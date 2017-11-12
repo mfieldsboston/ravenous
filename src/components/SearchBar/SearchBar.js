@@ -31,21 +31,21 @@ class SearchBar extends React.Component {
   }
 
   handleSortByChange(sortByOption) {
-    this.setState(
-      {sortBy: sortByOption}
-    );
+    this.setState({
+      sortBy: sortByOption
+    });
   }
 
   handleTermChange(event) {
-    this.setState(
-      {term: event.target.value}
-    );
+    this.setState({
+      term: event.target.value
+    });
   }
 
   handleLocationChange(event) {
-    this.setState(
-      {location: event.target.value}
-    );
+    this.setState({
+      location: event.target.value
+    });
   }
 
   handleSearch(event) {
@@ -61,33 +61,59 @@ class SearchBar extends React.Component {
 
   renderSortByOptions() {
     return Object.keys(sortByOptions).map(sortByOption => {
-        let sortByOptionValue = sortByOptions[sortByOption];
-        //return <li></li>;
-        //return <li key={sortByOptions}</li>;
-        //return <li key={sortByOption}</li>;
-        //return <li key={sortByOptionValue}</li>;
-        // Last THREE usable
-        //return <li key={sortByOptionValue}>{sortByOption}</li>;
-        //return <li className={this.getSortByClass(sortByOptionValue)} key={sortByOptionValue}>{sortByOption}</li>;
-        return <li onClick={this.handleSortByChange.bind(this, sortByOptionValue)} className={this.getSortByClass(sortByOptionValue)} key={sortByOptionValue}>{sortByOption}</li>;
+      let sortByOptionValue = sortByOptions[sortByOption];
+      //return <li></li>;
+      //return <li key={sortByOptions}</li>;
+      //return <li key={sortByOption}</li>;
+      //return <li key={sortByOptionValue}</li>;
+      // Last THREE usable
+      //return <li key={sortByOptionValue}>{sortByOption}</li>;
+      //return <li className={this.getSortByClass(sortByOptionValue)} key={sortByOptionValue}>{sortByOption}</li>;
+      return <li onClick = {
+        this.handleSortByChange.bind(this, sortByOptionValue)
+      }
+      className = {
+        this.getSortByClass(sortByOptionValue)
+      }
+      key = {
+        sortByOptionValue
+      } > {
+        sortByOption
+      } < /li>;
     });
   }
   render() {
-    return (
-          <div className="SearchBar">
-            <div className="SearchBar-sort-options">
-              <ul>
-                {this.renderSortByOptions()}
-              </ul>
-            </div>
-            <div className="SearchBar-fields">
-              <input onChange={this.handleTermChange} placeholder="Search Businesses" />
-              <input onChange={this.handleLocationChange} placeholder="Where?" />
-            </div>
-            <div className="SearchBar-submit" onClick={this.handleSearch}>
-              <a>Lets Go</a>
-            </div>
-          </div>
+    return ( <
+      div className = "SearchBar" >
+      <
+      div className = "SearchBar-sort-options" >
+      <
+      ul > {
+        this.renderSortByOptions()
+      } <
+      /ul> <
+      /div> <
+      div className = "SearchBar-fields" >
+      <
+      input onChange = {
+        this.handleTermChange
+      }
+      placeholder = "Search Businesses" / >
+      <
+      input onChange = {
+        this.handleLocationChange
+      }
+      placeholder = "Where?" / >
+      <
+      /div> <
+      div className = "SearchBar-submit"
+      onClick = {
+        this.handleSearch
+      } >
+      <
+      a > Lets Go < /a> <
+      /div> <
+      /div>
     );
   }
 }
